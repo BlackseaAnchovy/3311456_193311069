@@ -6,7 +6,7 @@ import 'package:todoapp/Screens/hakkinda.dart';
 import 'package:todoapp/Screens/iletisim.dart';
 import 'package:todoapp/Screens/splashScreen.dart';
 
-void main () => runApp(MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -16,20 +16,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        "/":(context) => splashScreen(),
-        "/giris":(context)=>GirisEkrani(),
-        "/anasayfa":(context) => AnaSayfa(),
-        "/ayarlar":(context)=>Ayarlar(),
-        "/iletisim":(context)=>iletisim(),
-        "/hakkinda":(context)=>hakkinda(),
+        "/": (context) => splashScreen(),
+        "/giris": (context) => GirisEkrani(),
+        "/anasayfa": (context) => AnaSayfa(),
+        "/ayarlar": (context) => Ayarlar(),
+        "/iletisim": (context) => iletisim(),
+        "/hakkinda": (context) => hakkinda(),
       },
       theme: ThemeData(
         brightness: Brightness.dark,
       ),
-
     );
   }
 }
-
-
-

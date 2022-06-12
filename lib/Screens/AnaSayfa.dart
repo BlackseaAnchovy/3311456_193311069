@@ -17,9 +17,9 @@ class _AnaSayfaState extends State<AnaSayfa> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: new Text("Görev Ekle/Çıkar"),
+          title: const Text("Görev Ekle/Çıkar"),
           content: TextField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.blue),
               ),
@@ -34,55 +34,6 @@ class _AnaSayfaState extends State<AnaSayfa> {
               elemanEkle();
             }, child: Text('Ekle'))
           ],
-          /*actions: <Widget>[
-            Row(
-              children: [
-                Material(
-                  color: const Color(0xff0e877d),
-                  child: InkWell(
-                    onTap: () {
-                      elemanEkle();
-                    },
-                    child: const SizedBox(
-                      height: kToolbarHeight,
-                      width: 200,
-                      child: Center(
-                        child: Text(
-                          'Ekle',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Material(
-                    color: const Color(0xff4a6dd0),
-                    child: InkWell(
-                      onTap: () {
-                        elemanCikar();
-                      },
-                      child: const SizedBox(
-                        height: kToolbarHeight,
-                        width: double.infinity,
-                        child: Center(
-                          child: Text(
-                            'Çıkar',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            )
-          ],*/
         );
       },
     );
@@ -105,13 +56,13 @@ class _AnaSayfaState extends State<AnaSayfa> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: drawer(),
+      drawer: const drawer(),
       appBar: AppBar(
         actions: [
-          new SizedBox(
+          SizedBox(
             height: 18.0,
             width: 42.0,
-            child: new IconButton(
+            child: IconButton(
               onPressed: () {
                 Navigator.pushReplacementNamed(context, '/');
               },
@@ -123,12 +74,12 @@ class _AnaSayfaState extends State<AnaSayfa> {
         title: const Text('Yapılacaklar Listesi'),
       ),
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
           onPressed: () {
             _showDialog();
           }),
       body: Container(
-        color: Color(0x46000000),
+        color: const Color(0x46000000),
         child: Column(
           children: [
             Flexible(
