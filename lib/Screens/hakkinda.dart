@@ -47,7 +47,8 @@ class _hakkindaState extends State<hakkinda> {
                 padding: EdgeInsets.all(13),
                 child: Center(child: Text('Link')),
               ),
-            )
+            ),
+
           ],
         ),
       ),

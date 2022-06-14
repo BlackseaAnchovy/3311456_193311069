@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp/Widgets/anaSayfaDrawer.dart';
+import 'package:todoapp/models/todo.dart';
+
+import '../service/auth.dart';
 
 class AnaSayfa extends StatefulWidget {
   const AnaSayfa({Key? key}) : super(key: key);
+
 
   @override
   State<AnaSayfa> createState() => _AnaSayfaState();
@@ -10,7 +14,7 @@ class AnaSayfa extends StatefulWidget {
 
 class _AnaSayfaState extends State<AnaSayfa> {
   TextEditingController t1 = TextEditingController();
-  List yapilacaklarListesi = [];
+  List <Todo>yapilacaklarListesi = [];
 
   void _showDialog() {
     showDialog(
@@ -28,6 +32,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
               border: OutlineInputBorder(),
             ),
             controller: t1,
+
           ),
           actions: [
             ElevatedButton(onPressed: (){
@@ -41,17 +46,18 @@ class _AnaSayfaState extends State<AnaSayfa> {
 
   elemanEkle() {
     setState(() {
-      yapilacaklarListesi.add(t1.text);
+    // yapilacaklarListesi.add(Todo(yapilacaklarListesi.length, t1.text));
       t1.clear();
     });
   }
 
   elemanCikar() {
     setState(() {
-      yapilacaklarListesi.remove(t1.text);
+      //yapilacaklarListesi.remove(Todo(yapilacaklarListesi.length, t1.text));
       t1.clear();
     });
   }
+  AuthService _authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +70,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
             width: 42.0,
             child: IconButton(
               onPressed: () {
+                _authService.signOut();
                 Navigator.pushReplacementNamed(context, '/');
               },
               icon: const Icon(Icons.logout),
@@ -88,15 +95,16 @@ class _AnaSayfaState extends State<AnaSayfa> {
                 itemBuilder: (context, indexNumarasi) => Card(
                   child: InkWell(
                     child: TextButton(
-                        onPressed: () {
+                        onLongPress: () {
                           setState(
                                 () {
                               yapilacaklarListesi.removeAt(indexNumarasi);
                             },
                           );
                         },
+                        onPressed: () {  },
                         child: ListTile(
-                          title: Text(yapilacaklarListesi[indexNumarasi]),
+                          title: Text(yapilacaklarListesi[indexNumarasi].title),
                         )),
                   )
                 ),
