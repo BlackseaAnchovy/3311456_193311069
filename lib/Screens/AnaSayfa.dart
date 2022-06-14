@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp/Widgets/anaSayfaDrawer.dart';
 import 'package:todoapp/models/todo.dart';
+import 'package:todoapp/service/todoService.dart';
 
 import '../service/auth.dart';
 
 class AnaSayfa extends StatefulWidget {
   const AnaSayfa({Key? key}) : super(key: key);
 
-
   @override
   State<AnaSayfa> createState() => _AnaSayfaState();
 }
 
 class _AnaSayfaState extends State<AnaSayfa> {
-  TextEditingController t1 = TextEditingController();
-  List <Todo>yapilacaklarListesi = [];
+  TodoService _todoService= TodoService();
+  TextEditingController todos = TextEditingController();
+  List<Todo> yapilacaklarListesi = [];
 
   void _showDialog() {
     showDialog(
@@ -31,13 +32,15 @@ class _AnaSayfaState extends State<AnaSayfa> {
               labelStyle: TextStyle(color: Colors.blue),
               border: OutlineInputBorder(),
             ),
-            controller: t1,
-
+            controller: todos,
           ),
           actions: [
-            ElevatedButton(onPressed: (){
-              elemanEkle();
-            }, child: Text('Ekle'))
+            ElevatedButton(
+                onPressed: () {
+                  _todoService.addTodo(todos.text);
+                  elemanEkle();
+                },
+                child: Text('Ekle'))
           ],
         );
       },
@@ -46,17 +49,18 @@ class _AnaSayfaState extends State<AnaSayfa> {
 
   elemanEkle() {
     setState(() {
-    // yapilacaklarListesi.add(Todo(yapilacaklarListesi.length, t1.text));
-      t1.clear();
+      yapilacaklarListesi.add(Todo(id: yapilacaklarListesi.toString(), title: todos.text));
+      todos.clear();
     });
   }
 
   elemanCikar() {
     setState(() {
-      //yapilacaklarListesi.remove(Todo(yapilacaklarListesi.length, t1.text));
-      t1.clear();
+      yapilacaklarListesi.remove(Todo(id:yapilacaklarListesi.toString(), title:todos.text));
+      todos.clear();
     });
   }
+
   AuthService _authService = AuthService();
 
   @override
@@ -93,21 +97,21 @@ class _AnaSayfaState extends State<AnaSayfa> {
               child: ListView.builder(
                 itemCount: yapilacaklarListesi.length,
                 itemBuilder: (context, indexNumarasi) => Card(
-                  child: InkWell(
-                    child: TextButton(
-                        onLongPress: () {
-                          setState(
-                                () {
-                              yapilacaklarListesi.removeAt(indexNumarasi);
-                            },
-                          );
-                        },
-                        onPressed: () {  },
-                        child: ListTile(
-                          title: Text(yapilacaklarListesi[indexNumarasi].title),
-                        )),
-                  )
-                ),
+                    child: InkWell(
+                  child: TextButton(
+                      onLongPress: () {
+                        setState(
+                          () {
+                            _todoService.removeTodo();
+                            yapilacaklarListesi.removeAt(indexNumarasi);
+                          },
+                        );
+                      },
+                      onPressed: () {},
+                      child: ListTile(
+                        title: Text(yapilacaklarListesi[indexNumarasi].title),
+                      )),
+                )),
               ),
             ),
           ],

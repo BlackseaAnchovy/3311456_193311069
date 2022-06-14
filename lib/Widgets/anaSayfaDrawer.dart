@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:todoapp/Widgets/dividerWidget.dart';
+
 class drawer extends StatefulWidget {
   const drawer({Key? key}) : super(key: key);
 
@@ -28,6 +29,7 @@ class _drawerState extends State<drawer> {
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -68,8 +70,5 @@ class _drawerState extends State<drawer> {
         ],
       ),
     );
-
   }
 }
-
-
