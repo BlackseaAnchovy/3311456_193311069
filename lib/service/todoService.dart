@@ -13,8 +13,8 @@ class TodoService{
     );
     return Todo(id: documentRef.id, title:title );
   }
-  Future<void> removeTodo(String docId) {
-    var ref = _firestore.collection("todo").doc(docId).delete();
+  Future<void> removeTodo(String titleId) {
+    var ref = _firestore.collection("todo").doc(titleId).delete();
     return ref;
   }
 }

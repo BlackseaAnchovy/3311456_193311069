@@ -102,7 +102,6 @@ class _AnaSayfaState extends State<AnaSayfa> {
                       onLongPress: () {
                         setState(
                           () {
-                            _todoService.removeTodo();
                             yapilacaklarListesi.removeAt(indexNumarasi);
                           },
                         );
