@@ -34,7 +34,7 @@ class _hakkindaState extends State<hakkinda> {
               margin: EdgeInsets.all(40),
               alignment: Alignment.center,
               child: Text(
-                  "Bu proje DR. ÖĞR. ÜYESİ Ahmet Cevahir ÇINAR'ın vermiş olduğu 3311456 Kodlu mobil programlama dersi için Hilmi KIRKGÖZ tarafından geliştirilmiştir."),
+                  "Bu proje DR. ÖĞR. ÜYESİ Ahmet Cevahir ÇINAR'ın vermiş olduğu 3311456 Kodlu mobil programlama dersi için Hilmi KIRKGÖZ tarafından geliştirilmektedir."),
             ),
             InkWell(
               onTap: () {

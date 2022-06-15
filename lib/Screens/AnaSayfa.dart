@@ -1,8 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:todoapp/Widgets/anaSayfaDrawer.dart';
 import 'package:todoapp/models/todo.dart';
 import 'package:todoapp/service/todoService.dart';
-
 import '../service/auth.dart';
 
 class AnaSayfa extends StatefulWidget {
@@ -35,7 +35,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
             controller: todos,
           ),
           actions: [
-            ElevatedButton(
+            CupertinoButton(
                 onPressed: () {
                   _todoService.addTodo(todos.text);
                   elemanEkle();
